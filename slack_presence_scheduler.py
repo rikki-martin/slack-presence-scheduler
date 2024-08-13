@@ -8,7 +8,7 @@ url = "https://slack.com/api/users.setPresence"
 
 headers = {
     "Authorization": f"Bearer {slack_token}",
-    "Content-Type": "application/json"
+    "Content-Type": "application/json; charset=utf-8"
 }
 
 def set_presence(presence):
