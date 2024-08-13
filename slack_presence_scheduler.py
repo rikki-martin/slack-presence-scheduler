@@ -25,6 +25,8 @@ def main():
         set_presence("auto")
     elif current_hour == 23: # If it's within 11PM UTC (5PM CST), set presence to away
         set_presence("away")
+    else:
+        set_presence("away")
 
 if __name__ == "__main__":
     main()
