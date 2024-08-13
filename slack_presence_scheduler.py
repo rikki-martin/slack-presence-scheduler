@@ -16,6 +16,7 @@ def set_presence(presence):
         "presence": presence
     }
     response = requests.post(url, headers=headers, json=data)
+    print(response.json())
     print(f"Presence set to {presence} at {datetime.now()}")
 
 def main():
