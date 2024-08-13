@@ -2,8 +2,8 @@ name: Set Slack Presence
 
 on:
   schedule:
-    - cron: '30 14 * * 1-5' # Every weekday at 14:30 (8:30 AM CST)
-    - cron: '30 23 * * 1-5' # Every weekday at 22:30 (5:30 PM CST)
+    - cron: '30 13 * * 1-5' # Every weekday at 13:30 (8:30 AM CST)
+    - cron: '30 22 * * 1-5' # Every weekday at 22:30 (5:30 PM CST)
   workflow_dispatch:
 
 jobs:

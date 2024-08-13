@@ -4,8 +4,8 @@ import requests
 from datetime import datetime
 
 # HOURS IN UTC
-START_HOUR = 14
-END_HOUR = 23
+START_HOUR = 13
+END_HOUR = 22
 
 AUTO = "auto"
 AWAY = "away"
@@ -37,9 +37,9 @@ def failureMessage():
 def main():
     current_hour = datetime.utcnow().hour
 
-    if current_hour == START_HOUR: # If it's within 2PM UTC (8AM CST), set presence to auto
+    if current_hour == START_HOUR:
         set_presence(AUTO)
-    elif current_hour == END_HOUR: # If it's within 11PM UTC (5PM CST), set presence to away
+    elif current_hour == END_HOUR:
         set_presence(AWAY)
     else:
         failureMessage()
