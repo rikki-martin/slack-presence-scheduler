@@ -17,13 +17,22 @@ Before running this script, ensure you have the following:
 
 ## Cron Setup
 
-1. **Clone the repository**:
+1. **Clone the repository (Optional)**:
 
    ```bash
    git clone https://github.com/rikki-martin/slack-presence-scheduler.git
    cd slack-presence-scheduler
 
-2. **Add your Slack OAuth Token in Github Secrets**
+2. **Fork the repository**:
+
+   This is more ideal since everything will be almost set up.
+
+3. **Add your Slack OAuth Token in Github Secrets**:
 
     On the repo, click `settings`, then `secrets and variables`, then `actions`, and `new repository secret`. Have the name be
     `SLACK_OAUTH_TOKEN` and the value your slack token starting with `xoxp-your-token`.
+
+4. **Configure start and end time configs**:
+
+   Change the scheduler in `.github/workflows/slack-presence.yml` for when you want to run the script.
+   Make sure to also set the `START_HOUR` and `END_HOUR` in `slack_presence_scheduler.py` to correspond with the hour set in the yml file or it will NOT work. ***NOTE: The times are all in UTC***
