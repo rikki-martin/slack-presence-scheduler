@@ -20,8 +20,8 @@ Before running this script, ensure you have the following:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/rikki-martin/SlackPresenceScheduler.git
-   cd SlackPresenceScheduler
+   git clone https://github.com/rikki-martin/slack-presence-scheduler.git
+   cd slack-presence-scheduler
 
 2. **Add your Slack OAuth Token in Github Secrets**
 
