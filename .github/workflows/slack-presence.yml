@@ -1,0 +1,29 @@
+name: Set Slack Presence
+
+on:
+  schedule:
+    - cron: '30 14 * * 1-5' # Every weekday at 14:30 (8:30 AM CST)
+    - cron: '30 23 * * 1-5' # Every weekday at 22:30 (5:30 PM CST)
+  workflow_dispatch:
+
+jobs:
+  set-slackstatus:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v2
+      
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install requests
+      
+      - name: Set Slack Presence
+        env:
+          SLACK_OAUTH_TOKEN: ${{ secrets.SLACK_OAUTH_TOKEN }}
+        run: python slack_presence_scheduler.py
+
