@@ -2,8 +2,9 @@ import os
 import requests
 from datetime import datetime
 
+AUTO = "auto"
+AWAY = "away"
 slack_token = os.getenv("SLACK_OAUTH_TOKEN")
-
 url = "https://slack.com/api/users.setPresence"
 
 headers = {
@@ -16,18 +17,27 @@ def set_presence(presence):
         "presence": presence
     }
     response = requests.post(url, headers=headers, json=data)
-    print(response.json())
-    print(f"Presence set to {presence} at {datetime.now()}")
+    response_json = response.json()
+
+    if response_json.get("ok"):
+        print(f"Presence set to {presence} at {datetime.now()}")
+    else:
+        print(f"Failed to set presence. Error: {response_json.get('error')}")
+        sys.exit(1)
+
+def failureMessage():
+    print("Failed to set presence due to time constraints. Please try again later.")
+    sys.exit(1)
 
 def main():
     current_hour = datetime.utcnow().hour
 
     if current_hour == 14: # If it's within 2PM UTC (8AM CST), set presence to auto
-        set_presence("auto")
+        set_presence(AUTO)
     elif current_hour == 23: # If it's within 11PM UTC (5PM CST), set presence to away
-        set_presence("away")
+        set_presence(AWAY)
     else:
-        set_presence("away")
+        failureMessage()
 
 if __name__ == "__main__":
     main()
