@@ -27,7 +27,7 @@ def set_presence(presence):
         sys.exit(1)
 
 def failureMessage():
-    print("Failed to set presence due to time constraints. Please try again later.")
+    print("ERROR: This script ran at an unexpected time. Please check the schedule.")
     sys.exit(1)
 
 def main():
