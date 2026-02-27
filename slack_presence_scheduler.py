@@ -37,12 +37,12 @@ def failureMessage():
 def main():
     current_hour = datetime.utcnow().hour
 
-    if current_hour == START_HOUR:
+    if START_HOUR <= current_hour < END_HOUR:
         set_presence(AUTO)
-    elif current_hour == END_HOUR:
-        set_presence(AWAY)
+        print("Set status to online")
     else:
-        failureMessage()
+        set_presence(AWAY)
+        print("Set status to offline")
 
 if __name__ == "__main__":
     main()
